@@ -22,5 +22,7 @@ RUN cd src/server && npx prisma generate && npm run build
 
 EXPOSE 3001
 
+ENV NODE_ENV=production
+
 # Run the backend process on start
 CMD ["npm", "start", "--prefix", "src/server"]

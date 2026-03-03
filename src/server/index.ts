@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import path from 'path';
 import authRoutes from './routes/auth';
 import taskRoutes from './routes/tasks';
 import voiceRoutes from './routes/voice';
@@ -27,6 +28,16 @@ app.use('/api/voice', voiceRoutes);
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' });
 });
+
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+    const clientDistPath = path.join(__dirname, '../../client/dist');
+    app.use(express.static(clientDistPath));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(clientDistPath, 'index.html'));
+    });
+}
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
