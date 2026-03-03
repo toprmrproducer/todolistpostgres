@@ -1,0 +1,16 @@
+{
+  "name": "better-every-day",
+  "version": "1.0.0",
+  "description": "A responsive full-stack web application featuring a personal to-do list and a \"Self-Talk\" audio section.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm run dev --prefix src/server",
+    "dev:client": "npm run dev --prefix src/client",
+    "build": "npm run build --prefix src/client && npm run build --prefix src/server",
+    "start": "npm start --prefix src/server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
