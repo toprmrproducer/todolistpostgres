@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { api } from '../lib/api';
-import { Mic, Square, Save, Play, Trash2 } from 'lucide-react';
+import { Mic, Square, Save } from 'lucide-react';
 
 type Props = {
     onUploadComplete: () => void;
